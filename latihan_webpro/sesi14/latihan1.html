@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Jquery01</title>
+    
+</head>
+<body>
+
+    <h3>Judul</h3>
+    <div id="pesan1">Isi Id pesan 1</div>
+    <div class="pesan1">isi Class pesan 1</div>
+
+
+    <p>Anaa Gurl</p>
+    <div id="gurl">Anaa gurl1</div>
+    <div class="gurl">Anaa gurl1</div>
+
+    <script src="jquery-3.7.0.min.js"></script> 
+    <script>
+
+        $(function(){
+            $("h3").html("Isi dari judul diganti");
+            $("#pesan1").html("Pesan 1 di Ubah");
+            $(".pesan1").html("Mengubah isi dari class pesan 1");
+            $("P").html("Deya cantik");
+            $("p").css("font-weight","bold");
+            $("#gurl").html("Deyaa Cantik2");
+            $(".gurl").html("Deyaa Cantik2");
+        });
+
+    
+    </script>
+</body>
+</html>

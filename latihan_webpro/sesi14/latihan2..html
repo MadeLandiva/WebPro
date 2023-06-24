@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Jquery 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+<div class="container text-center">
+    <h3 class="mb-3">Hitung Luas</h3>
+
+    <div>
+        <button type="button" class="C1 btn btn-primary mb-3">Persegi</button>
+        <button type="button" class="C2 btn btn-primary mb-3">Segitiga</button>
+    </div>
+
+    <div id="persegi" class="mb-3">
+
+        <div class="mb-3">
+            Nilai Panjang
+            <input type="number" class="panjang form-control">
+        </div>
+        <div class="mb-3">
+            Nilai Lebar
+            <input type="number" class="lebar form-control">
+        </div>
+        <div class="mb-3">
+            <button type="button" class="hitungpersegi btn btn-primary">Hitung Persegi</button>
+        </div>
+
+    </div>
+
+
+    <div id="segi3" class="mb-3">
+
+        <div class="mb-3">
+            Nilai alas
+            <input type="number" class="alas form-control">
+        </div>
+        <div class="mb-3">
+            Nilai tinggi
+            <input type="number" class="tinggi form-control">
+        </div>
+        <div class="mb-3">
+            <button type="button" class="hitungsegi3 btn btn-primary">Hitung Segitiga</button>
+        </div>
+
+    </div>
+    <div id="hasil" class="mb-3"></div>
+</div>
+    <script src="jquery-3.7.0.min.js"></script>
+    <script>
+        $(function(){
+            $("#persegi").hide();
+            $("#segi3").hide();
+            $(".C1").click(function(){
+                $("h3").html("Hitung Luas Persegi");
+                $("#segi3").hide(1000);
+                $("#persegi").show(1000);
+                $("#hasil").html("");
+            });
+
+            $(".C2").click(function(){
+                $("h3").html("Hitung Luas Segitiga");
+                $("#persegi").hide(1000);
+                $("#segi3").show(1000);
+                $("#hasil").html("");
+            });
+            $(".hitungpersegi").click(function(){
+                //input
+                let p = $(".panjang").val();
+                let l = $(".lebar").val();
+                //proses
+                let luas = p*l;
+                //output
+                let tx = "Luas Persegi dengan panjang "+p;
+                tx += " dan lebar "+l+" adalah: "+luas;
+
+                $("#hasil").html(tx);
+            })
+
+            $(".hitungsegi").click(function(){
+                //input
+                let a = $(".alas").val();
+                let t = $(".tinggi").val();
+                //proses
+                let luas3 = 0.5*a*t;
+                //output
+                let tx = "Luas Segitiga dengan alas "+a;
+                tx += " dan tinggi "+t+" adalah: "+luas3;
+
+                $("#hasil").html(tx);
+            })
+
+        });
+
+
+    </script>
+</body>
+</html>

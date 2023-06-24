@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Latihan1</title>
+    <style>
+        body{
+            color: aliceblue;
+        }
+        .form1{
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgb(49, 49, 49);
+            display: flex;
+            justify-content: space-around;
+        }
+        .form2{
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgb(49, 49, 49);
+        }
+        .color1{
+            background-color: rgb(163, 163, 163);
+        }
+        .color2{
+            background-color: rgb(78, 78, 78);
+        }
+        .img{
+            width: 30%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="color2">
+    <div class=" pt-5 ">
+        <form action="" class="container form1 ">
+            <img class="img" src="img.jpg" alt="">
+            <div style="width: 500px;">
+                <h3>Data Mahasiswa</h3>
+                <div class="mb-3">
+                    Nama
+                    <input type="text" id="txNAMA" class="form-control color1">
+                </div>
+                <div class="mb-3">
+                    Email
+                    <input type="email" id="txEMAIL" class="form-control color1">
+                </div>
+                <div class="mb-3">
+                    User Name
+                    <input type="email" id="txUSERNAME" class="form-control color1">
+                </div>
+                <div class="mb-3">
+                    ID
+                    <input type="email" id="txID" class="form-control color1">
+                </div>
+            </div>
+        </form>
+        <div class="container mt-5 form2" id="tampildata" ></div>
+    </div>
+    
+    
+    
+    <script src="jquery-3.7.0.min.js"></script>
+    <script>
+        $(function(){
+            let urtarget = "https://webpro.ptov.my.id/api/curduser.php?aksi=get"
+
+            $.get({
+                url: urtarget,
+                success: function(dta, status, xhr){
+                    console.log(dta);
+                    $("#txNAMA").val(dta.isi[0][0]);
+                    $("#txEMAIL").val(dta.isi[0][1]);
+                    $("#txUSERNAME").val(dta.isi[0][2]);
+                    $("#txID").val(dta.isi[0][3]);
+
+                    let tx= '<h3>Data Mahasiswa</h3><br><table class=" container";"><thead><tr><th scope="col">NO</th><th scope="col">Nama</th><th scope="col">Email</th><th scope="col">Username</th></tr></thead>';
+                    let nox= 1;
+                    for(let i=0; i<dta.affected; i++){
+                        //tx += '<tbody>';
+                        tx += '<tr>';
+                        tx += '<td>'+nox+'</td>';
+                        tx += '<td>'+dta.isi[i][0]+'</td>';
+                        tx += '<td>'+dta.isi[i][1]+'</td>';
+                        tx += '<td>'+dta.isi[i][2]+'</td>';
+                        tx += '</tr>';
+                        //tx += '</tbody>';
+                        nox++;
+                    }
+                    tx += '</table>';
+                    $('#tampildata').html(tx);
+                }
+            });
+        })
+    </script>
+    
+</body>
+</html>
